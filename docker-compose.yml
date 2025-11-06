@@ -1,0 +1,14 @@
+services:
+  pocketbase:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pocketbase
+    ports:
+      - "127.0.0.1:8541:8080"   # restrict to host-only access
+    volumes:
+      - pb_data:/pb/pb_data      # persistent data volume
+    restart: unless-stopped
+
+volumes:
+  pb_data:
